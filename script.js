@@ -15,21 +15,63 @@ document.addEventListener("DOMContentLoaded", function () {
     const wordData = {
         "2024-12-25": [
             {
-                word: "hello",
-                pronunciation: "/ˈhɛləʊ/",
-                definition: "A greeting",
+                word: "puppet",
+                pronunciation: "/ˈpʌpɪt/",
+                definition: "木偶，傀儡",
                 example: {
-                    en: "Hello! How are you?",
-                    zh: "你好！你怎么样？"
+                    en: "The political & legacy media  <span style='color: green;'>puppets</span>  all got their new instructions yesterday and are now <span style='color:blue;'>parroting</span> the same message to drive a <span style='color:purple;'>wedge</span> between @realDonaldTrump and me.",
+                    zh: "所有政治和传统媒体的傀儡们昨天都收到了新的指示，现在它们正在重复同样的信息，试图在我和@realDonaldTrump之间制造分裂。"
                 }
-            },
-            {
-                word: "world",
-                pronunciation: "/wɜːld/",
-                definition: "The earth",
+            }, {
+                word: "Parrot",
+                pronunciation: "/ˈpærət/",
+                definition: "鹦鹉",
                 example: {
-                    en: "The world is beautiful.",
-                    zh: "这个世界很美丽。"
+                    en: "The parrot is known for its ability to mimic sounds.",
+                    zh: "鹦鹉因其模仿声音的能力而闻名。。"
+                }
+            }, {
+                word: "Wedge",
+                pronunciation: "/wɛdʒ/",
+                definition: "（人或事物之间的）隔阂、裂痕：比喻用法",
+                example: {
+                    en: "The scandal created a wedge between the political allies.",
+                    zh: "丑闻在政治盟友之间制造了裂痕。"
+                }
+            }, {
+                word: "Mimic",
+                pronunciation: "/ˈmɪmɪk/",
+                definition: "模仿",
+                example: {
+                    en: "The comedian is known as a great mimic, often imitating famous personalities.",
+                    zh: "这位喜剧演员因擅长模仿而闻名，经常模仿著名人物。"
+                }
+            }, {
+                word: "Allies",
+                pronunciation: "/ˈælaɪz/",
+                definition: "盟友",
+                example: {
+
+                    en: "During World War II, the United States and the United Kingdom were allies in the fight against Nazi Germany.",
+                    zh: "在第二次世界大战期间，美国和英国是联合对抗纳粹德国的盟友。"
+                }
+            }, {
+                word: "Ally",
+                pronunciation: "/ˈælaɪ/",
+                definition: "盟友（单数形式）",
+                example: {
+
+                    en: "She is my ally in the battle for justice.",
+                    zh: "她是我在追求正义斗争中的盟友。"
+                }
+            }, {
+                word: "Alliance",
+                pronunciation: "/əˈlaɪəns/",
+                definition: "联盟",
+                example: {
+
+                    en: "The two nations formed an alliance to fight against the common enemy.",
+                    zh: "两个国家结成联盟共同对抗共同的敌人。"
                 }
             }
         ],

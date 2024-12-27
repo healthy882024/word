@@ -11,57 +11,98 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let currentDate = new Date();
 
-    // 用于存储每天的单词记录，按照具体日期存储
+    // 原始单词数据
     const wordData = {
         "2024-12-25": [
             {
                 word: "hello",
-                pronunciation: "/ˈhɛləʊ/",  // 发音放前面
+                pronunciation: "/ˈhɛləʊ/",
                 definition: "A greeting",
                 example: {
-                    en: "Hello! How are you?",  // 英文例句
-                    zh: "你好！你怎么样？"  // 中文例句
+                    en: "Hello! How are you?",
+                    zh: "你好！你怎么样？"
                 }
             },
             {
                 word: "world",
-                pronunciation: "/wɜːld/",  // 发音放前面
+                pronunciation: "/wɜːld/",
                 definition: "The earth",
                 example: {
-                    en: "The world is beautiful.",  // 英文例句
-                    zh: "这个世界很美丽。"  // 中文例句
+                    en: "The world is beautiful.",
+                    zh: "这个世界很美丽。"
                 }
             }
         ],
         "2024-12-26": [
             {
-                word: "apple",
-                pronunciation: "/ˈæpl/",  // 发音放前面
-                definition: "A fruit",
+                word: "hello",
+                pronunciation: "/ˈhɛləʊ/",
+                definition: "A greeting",
                 example: {
-                    en: "I ate an apple today.",  // 英文例句
-                    zh: "我今天吃了一个苹果。"  // 中文例句
+                    en: "Hello! How are you?",
+                    zh: "你好！你怎么样？"
                 }
             },
             {
                 word: "banana",
-                pronunciation: "/bəˈnɑːnə/",  // 发音放前面
+                pronunciation: "/bəˈnɑːnə/",
                 definition: "A yellow fruit",
                 example: {
-                    en: "Bananas are rich in potassium.",  // 英文例句
-                    zh: "香蕉富含钾元素。"  // 中文例句
+                    en: "Bananas are rich in potassium.",
+                    zh: "香蕉富含钾元素。"
+                }
+            }
+        ],
+        "2024-12-27": [
+            {
+                word: "hello",
+                pronunciation: "/ˈhɛləʊ/",
+                definition: "A greeting",
+                example: {
+                    en: "HI! How are you?",
+                    zh: "你好！你怎么样？"
+                }
+            },
+            {
+                word: "banana",
+                pronunciation: "/bəˈnɑːnə/",
+                definition: "A yellow fruit",
+                example: {
+                    en: "Bananas are rich in potassium.",
+                    zh: "香蕉富含钾元素。"
                 }
             }
         ]
     };
 
+    // 用于存储每个单词的出现次数
+    const wordCountMap = {};
 
+    // 遍历 wordData 计算每个单词的出现次数，并为其标记出现顺序
+    Object.keys(wordData).forEach(date => {
+        wordData[date].forEach(entry => {
+            const word = entry.word;
 
-    // 加载年份和月份选择框
+            // 如果单词已经出现过，增加计数
+            if (wordCountMap[word]) {
+                wordCountMap[word]++;
+            } else {
+                wordCountMap[word] = 1;
+            }
+
+            // 给每个单词添加 count 字段，表示该单词的重复出现次数（从第二次开始才标记）
+            entry.count = wordCountMap[word] > 1 ? wordCountMap[word] - 1 : 0;  // 第二次出现及之后，count 从 1 开始
+        });
+    });
+
+    // 输出更新后的 wordData 以验证结果
+    console.log(wordData);
+
+    // 以下为现有的代码，负责加载年份、月份、渲染日历等
     function loadYearAndMonth() {
         const currentYear = currentDate.getFullYear();
-        const startYear = currentYear - 5;  // 当前年份前5年
-        const endYear = currentYear + 5;    // 当前年份后5年
+        const startYear = currentYear - 5;
+        const endYear = currentYear + 5;
 
         const yearOptions = Array.from({ length: endYear - startYear + 1 }, (_, i) => startYear + i);
 
@@ -113,8 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // 单词数量显示
             const wordCountElement = document.createElement("div");
             wordCountElement.classList.add("day-word-count");
-            wordCountElement.textContent = wordCount > 0 ? wordCount : '-';  // 默认显示"-"以确保高度一致
-
+            wordCountElement.textContent = wordCount > 0 ? wordCount : '-';
 
             td.appendChild(dayContainer);
             td.appendChild(wordCountElement);
@@ -145,19 +185,22 @@ document.addEventListener("DOMContentLoaded", function () {
         wordDetailsList.innerHTML = words.length === 0
             ? "<li>没有单词记录。</li>"
             : words.map((word, index) => `
-            <li>
-                <span class="word-number">${index + 1}</span>
-                <span class="word-item" data-word="${word.word}">${word.word}</span>
-                <div class="word-details" id="details-${index + 1}">
-                    <p class="word-pronunciation">${word.pronunciation}</p>  <!-- 发音 -->
-                    <p class="word-definition">${word.definition}</p>  <!-- 定义 -->
-                    <p class="word-example">
-                        ${word.example.en}<br>  <!-- 英文例句 -->
-                        ${word.example.zh}  <!-- 中文例句 -->
-                    </p>  <!-- 例句 -->
-                </div>
-            </li>
-        `).join('');
+    <li>
+        <span class="word-number">${index + 1}</span>
+        <span class="word-item" data-word="${word.word}">
+            ${word.count > 0 ? `<span class="repeat-count">${word.count}</span>` : ""}
+            ${word.word} <span class="word-pronunciation">${word.pronunciation}</span>
+        </span>
+        <div class="word-details" id="details-${index + 1}">
+            <p class="word-definition">${word.definition}</p> 
+            <p class="word-example">  
+                ${word.example.en}<br> 
+                ${word.example.zh}
+            </p>
+        </div>
+    </li>
+`).join('');
+
 
         modal.style.display = "block";
 
@@ -184,9 +227,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-
-
+    // 关闭 modal
     closeModalButton.addEventListener("click", () => modal.style.display = "none");
+
+    // 点击窗口外部关闭 modal
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
 
     prevMonthButton.addEventListener("click", () => {
         monthSelect.value = (parseInt(monthSelect.value) - 1 + 12) % 12;

@@ -1,0 +1,189 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.calendar-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 320px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.calendar {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar th,
+.calendar td {
+    text-align: center;
+    padding: 10px;
+    width: 14.28%;
+    /* 7 columns => each column is 14.28% width */
+}
+
+.calendar th {
+    background-color: #f1f1f1;
+}
+
+.calendar td {
+    cursor: pointer;
+}
+
+.calendar td:hover {
+    background-color: #f1f1f1;
+}
+
+.calendar td.clicked {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Container to hold date and word count */
+.day-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.day-date {
+    font-size: 16px;
+    color: #333;
+}
+
+/* 单词数量的容器样式 */
+.day-word-count {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+    min-height: 20px;
+    /* 固定最小高度 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+}
+
+/* 单词展开的效果 */
+.word-details {
+    display: none;
+    font-size: 14px;
+    margin-top: 5px;
+    color: #777;
+}
+
+.word-details.show {
+    display: block;
+    opacity: 1;
+}
+
+/* 单词样式 */
+.word-item {
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.word-item:hover {
+    color: #0056b3;
+}
+
+/* 序号的样式 */
+.word-number {
+    font-size: 12px;
+    color: #888;
+    margin-right: 5px;
+}
+
+/* 显示点击单词详情 */
+.day-word-count-large {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.arrow-button {
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-button:hover {
+    color: #0056b3;
+}

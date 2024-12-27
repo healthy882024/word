@@ -150,13 +150,23 @@ li {
 
 /* 单词样式 */
 .word-item {
-    cursor: pointer;
-    color: #007bff;
-    text-decoration: underline;
+    font-weight: normal;
+    position: relative;
+    display: inline-block;
+    /* 确保 word-item 是一个内联块元素 */
+    display: inline-block;
+    position: relative;
 }
 
 .word-item:hover {
     color: #0056b3;
+}
+
+.word-pronunciation {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #555;
+    margin-left: 5px;
 }
 
 /* 序号的样式 */
@@ -186,4 +196,14 @@ li {
 
 .arrow-button:hover {
     color: #0056b3;
+}
+
+.repeat-count {
+    font-size: 0.8em;
+    color: #888;
+    position: absolute;
+    top: -0.25em;
+    /* 上移一些 */
+    right: -1.1em;
+    /* 右移一些，确保靠近单词 */
 }

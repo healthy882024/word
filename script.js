@@ -44,6 +44,41 @@ document.addEventListener("DOMContentLoaded", function () {
         "2024-12-28": [
             { word: "hi" },
             { word: "banana" }
+        ],
+        "2025-01-01": [
+            { word: "survive" },
+            { word: "survival" },
+            { word: "wilderness" },
+            { word: "paramilitary" },
+            { word: "bullying" },
+            { word: "virtue" },
+            { word: "punch" },
+            { word: "awkward" },
+            { word: "insane" },
+            { word: "mind-blowing" },
+            { word: "counselors" },
+            { word: "recount" },
+            { word: "judo" },
+            { word: "attacks" },
+            { word: "anti-apartheid" },
+            { word: "concert" },
+            { word: "sticking" },
+            { word: "soles" },
+            { word: "sneakers" },
+            { word: "sticky" },
+            { word: "pavement" },
+            { word: "German Shepherd dogs" },
+            { word: "racing" },
+            { word: "massive" },
+            { word: "stitch" },
+            { word: "swore" },
+            { word: "stare" },
+            { word: "vacantly" },
+            { word: "searing" },
+            { word: "cues" },
+            { word: "Empathy" },
+            { word: "instinct" },
+            { word: "distinct" }
         ]
     };
 

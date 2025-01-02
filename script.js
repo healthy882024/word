@@ -233,41 +233,21 @@ document.addEventListener("DOMContentLoaded", function () {
             ${word.count > 0 ? `<span class="repeat-count">${word.count}</span>` : ""}
             ${word.word} <span class="word-pronunciation">${word.pronunciation}</span>
         </span>
-        <div class="word-details" id="details-${index + 1}">
-            <p class="word-definition">${word.definition}</p> 
-            <p class="word-example">  
-                ${word.example.en}<br> 
-                ${word.example.zh}
-            </p>
-        </div>
     </li>
 `).join('');
 
-
         modal.style.display = "block";
 
-        // 给每个单词添加点击事件来显示详细信息
         const wordItems = document.querySelectorAll(".word-item");
         wordItems.forEach(item => {
             item.addEventListener("click", function () {
-                const wordDetails = item.nextElementSibling;  // 获取当前单词的详情
-
-                // 切换该单词的详情展开/折叠
-                wordDetails.classList.toggle("show");
-            });
-        });
-
-        // 给已展开的单词详情添加点击事件来折叠它
-        const wordDetails = document.querySelectorAll(".word-details");
-        wordDetails.forEach(detail => {
-            detail.addEventListener("click", function (event) {
-                // 阻止事件冒泡到单词
-                event.stopPropagation();
-                // 通过点击详情来折叠它
-                detail.classList.remove("show");
+                const word = item.getAttribute("data-word");
+                window.open(`https://dict.youdao.com/w/eng/${word}/#keyfrom=dict2.index`, '_blank');
             });
         });
     }
+
+
 
     // 关闭 modal
     closeModalButton.addEventListener("click", () => modal.style.display = "none");

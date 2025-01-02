@@ -9,15 +9,23 @@
 </head>
 
 <body>
-    <div class="calendar-container">  
+    <div class="calendar-container">
         <header class="calendar-header">
-            <button id="prev-month" class="arrow-button">&#8592;</button> <!-- 左箭头 -->
-            <div id="calendar-header">
+            <button id="prev-month" class="arrow-button">←</button> <!-- 左箭头 -->
+            <div class="year-month-select">
                 <select id="year-select"></select>
+                <div class="total-count" id="total-word-count-year">
+                    <span id="year-count-value">0</span>
+                </div>
                 <select id="month-select"></select>
+                <div class="total-count" id="total-word-count-month">
+                    <span id="month-count-value">0</span>
+                </div>
+
             </div>
             <button id="next-month" class="arrow-button">&#8594;</button> <!-- 右箭头 -->
         </header>
+
         <table class="calendar">
             <thead id="calendar-header-days">
                 <!-- Weekdays will be inserted dynamically -->

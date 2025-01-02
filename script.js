@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
             { word: "sneakers" },
             { word: "sticky" },
             { word: "pavement" },
-            { word: "German Shepherd dogs" },
+            { word: "Shepherd" },
             { word: "racing" },
             { word: "massive" },
             { word: "stitch" },

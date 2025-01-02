@@ -177,10 +177,28 @@ button:hover {
 }
 
 .close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 18px;
+    /* 调整字体大小 */
+    font-weight: normal;
+    /* 设置字体为常规重量 */
+    color: #333;
+    /* 设置颜色 */
+    background: none;
+    /* 不显示背景 */
+    border: none;
+    /* 去掉边框 */
+    padding: 0;
+    /* 去掉内边距 */
+    position: absolute;
+    /* 绝对定位 */
+    top: 10px;
+    /* 距离顶部10px */
+    right: 10px;
+    /* 距离右侧10px */
+    cursor: pointer;
+    /* 鼠标悬停时显示指针 */
+    transition: transform 0.3s ease;
+    /* 添加过渡效果 */
 }
 
 .close-btn:hover,

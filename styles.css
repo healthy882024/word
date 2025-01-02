@@ -157,23 +157,23 @@ button:hover {
 
 .modal-content {
     background-color: #fff;
-    margin: 0 auto;
     padding: 20px;
     border-radius: 8px;
     width: 80%;
     max-width: 600px;
     overflow-y: auto;
     max-height: 80vh;
-    /* 限制最大高度为屏幕的90% */
+    /* 限制最大高度为屏幕的80% */
     box-sizing: border-box;
+
+    /* 设置弹出框为固定定位 */
     position: fixed;
-    /* 固定位置 */
-    bottom: 10vh;
-    /* 离屏幕底部10%的距离（你可以调整这个值） */
+    top: 50%;
+    /* 垂直居中 */
     left: 50%;
     /* 水平居中 */
-    transform: translateX(-50%);
-    /* 确保弹出框水平居中 */
+    transform: translate(-50%, -50%);
+    /* 移动弹出框，使其居中 */
 }
 
 .close-btn {

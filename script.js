@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
         wordItems.forEach(item => {
             item.addEventListener("click", function () {
                 const word = item.getAttribute("data-word");
-                window.open(`https://dict.youdao.com/w/eng/${word}/#keyfrom=dict2.index`, '_blank');
+                window.open(`https://m.youdao.com/dict?le=eng&q=${word}`, '_blank');
             });
         });
     }

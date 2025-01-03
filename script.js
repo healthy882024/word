@@ -8,10 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("word-details-modal");
     const closeModalButton = document.getElementById("close-modal");
     const wordDetailsList = document.getElementById("word-details-list");
-    const totalWordCountElementYear = document.getElementById("total-word-count-year");
-    const totalWordCountElementMonth = document.getElementById("total-word-count-month");
-    const yearCountValue = document.getElementById("year-count-value");
-    const monthCountValue = document.getElementById("month-count-value");
 
     let currentDate = new Date();
 
@@ -56,11 +52,11 @@ document.addEventListener("DOMContentLoaded", function () {
             { word: "awkward" },
             { word: "insane" },
             { word: "mind-blowing" },
-            { word: "counselors" },
+            { word: "counselor" },
             { word: "recount" },
             { word: "judo" },
             { word: "attacks" },
-            { word: "anti-apartheid" },
+            { word: "antiapartheid" },
             { word: "concert" },
             { word: "sticking" },
             { word: "soles" },
@@ -84,17 +80,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const wordCountMap = {};
 
+    // Fill wordCountMap
     Object.keys(wordData).forEach(date => {
         wordData[date].forEach(entry => {
-            const word = entry.word;
-
-            if (wordCountMap[word]) {
-                wordCountMap[word]++;
-            } else {
-                wordCountMap[word] = 1;
-            }
-
-            entry.count = wordCountMap[word] > 1 ? wordCountMap[word] - 1 : 0;
+            wordCountMap[entry.word] = (wordCountMap[entry.word] || 0) + 1;
+            entry.count = wordCountMap[entry.word] - 1;  // Track repetitions
         });
     });
 
@@ -127,20 +117,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         Object.keys(wordData).forEach(date => {
             const [yearData, monthData] = date.split('-');
-
             const dailyWordCount = wordData[date].length;
 
-            if (yearData === year.toString()) {
-                totalYearCount += dailyWordCount;
-            }
-
-            if (yearData === year.toString() && parseInt(monthData) === month + 1) {
-                totalMonthCount += dailyWordCount;
-            }
+            if (yearData === year.toString()) totalYearCount += dailyWordCount;
+            if (yearData === year.toString() && parseInt(monthData) === month + 1) totalMonthCount += dailyWordCount;
         });
 
-        yearCountValue.textContent = totalYearCount;
-        monthCountValue.textContent = totalMonthCount;
+        document.getElementById("year-count-value").textContent = totalYearCount;
+        document.getElementById("month-count-value").textContent = totalMonthCount;
     }
 
     function renderCalendar() {
@@ -153,8 +137,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         calendarBody.innerHTML = "";
         const fragment = document.createDocumentFragment();
-
-        let totalWordCount = 0;
 
         let tr = document.createElement("tr");
         for (let i = 0; i < firstDayOfWeek; i++) {
@@ -171,8 +153,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const dateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
             const wordCount = wordData[dateKey] ? wordData[dateKey].length : 0;
-
-            totalWordCount += wordCount;
 
             const wordCountElement = document.createElement("div");
             wordCountElement.classList.add("day-word-count");
@@ -246,11 +226,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     yearSelect.addEventListener("change", renderCalendar);
-
     monthSelect.addEventListener("change", renderCalendar);
 
     loadYearAndMonth();
     renderWeekdays();
-    calculateWordCounts();
     renderCalendar();
 });
